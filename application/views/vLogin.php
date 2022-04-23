@@ -63,7 +63,7 @@
                             <!-- <i class="fa fa-twitter" aria-hidden="true"></i> -->
                         </a>
                     </div>
-                    <p class="text-center">© <?= date('Y'); ?> IT Fakultas Hukum UII</p>
+                    <p class="text-center">© <?= date('Y'); ?> UndanganKu</p>
                 </form>
 
                 <div class="login100-more" style="background-image: url('<?php echo base_url(); ?>assets/login/images/bg-01.jpg');">

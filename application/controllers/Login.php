@@ -13,8 +13,8 @@ class login extends CI_Controller
 
     public function index()
     {
-        $data['title']          = "eQUIVA";
-        $data['subtitle']       = "Sistem Ekuivalensi Prestasi";
+        $data['title']          = "UndanganKu";
+        $data['subtitle']       = "Halaman login customer";
 
         // hapus session sebelumnya
         $this->session->sess_destroy();
