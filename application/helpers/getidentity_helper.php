@@ -12,7 +12,7 @@
 if (!function_exists('getTopTitle')) {
 	function getTopTitle()
 	{
-		$getTopTitle = "GateLaw :: eQuiva";
+		$getTopTitle = "UndanganKu :: Digital Wedding Invitation";
 		return $getTopTitle;
 	}
 }
