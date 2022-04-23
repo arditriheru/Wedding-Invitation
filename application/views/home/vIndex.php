@@ -102,7 +102,7 @@
                                     <h2 class="text-uppercase"><?= $d->title; ?></h2>
                                     <p class="item-intro text-muted"><?= $d->subtitle; ?></p>
                                     <img class="img-fluid d-block mx-auto" src="<?= base_url('assets/home/img/template/' . $d->image); ?>" alt="..." />
-                                    <a href="<?= base_url('home/order/' . $d->id_template); ?>" class="btn btn-primary btn-xl text-uppercase" type="button">
+                                    <a href="<?= base_url('home/order?template=' . $d->id_template); ?>" class="btn btn-primary btn-xl text-uppercase" type="button">
                                         <i class="fas fa-xmark me-1"></i>
                                         Order Now!
                                     </a>

@@ -9,6 +9,7 @@ class home extends CI_Controller
         $this->load->model("Mhome");
     }
 
+    // halaman utama
     public function index()
     {
         $data['title']          = "Undanganku";
@@ -16,6 +17,15 @@ class home extends CI_Controller
 
         $data['dataTemplate']   = $this->Mhome->getData("template")->result();
 
-        $this->load->view('vHome', $data);
+        $this->load->view('home/vIndex', $data);
+    }
+
+    // halaman order
+    public function order()
+    {
+        $data['title']          = "Form Order";
+        $data['subtitle']       = "Undanganku Digital Wedding Invitation";
+
+        $this->load->view('home/vOrder', $data);
     }
 }
