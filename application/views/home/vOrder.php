@@ -34,102 +34,119 @@
             </div>
         </div>
     </nav>
-    <!-- Contact-->
-    <section class="page-section" id="contact">
-        <div class="container">
-            <div class="text-center">
-                <h2 class="section-heading text-uppercase"><?= $title; ?></h2>
-                <h3 class="section-subheading text-muted"><?= $subtitle; ?></h3>
-            </div>
 
-            <form class="form-prevent" id="contactForm" action="<?php echo base_url('home/orderAksi/' . $this->input->get('template') . '/' . $this->session->userdata('id_customer')); ?>" method="post" enctype="multipart/form-data">
-                <div class="row align-items-stretch mb-5">
-                    <div class="col-md-6">
-                        <h6 class="text-left text-white">Nama Mempelai pria</h6>
-                        <div class="form-group">
-                            <input class="form-control" name="groom" type="text" placeholder="Tuliskan.." maxlength="45" maxlength="45" required>
-                        </div>
-                        <!-- form group -->
-                        <h6 class="text-left text-white">Nama ayah mempelai pria</h6>
-                        <div class="form-group">
-                            <input class="form-control" name="groom_father" type="text" placeholder="Tuliskan.." maxlength="45" required>
-                        </div>
-                        <!-- form group -->
-                        <h6 class="text-left text-white">Nama ibu mempelai pria</h6>
-                        <div class="form-group">
-                            <input class="form-control" name="groom_mother" type="text" placeholder="Tuliskan.." maxlength="45" required>
-                        </div>
-                        <!-- form group -->
-                        <h6 class="text-left text-white">Foto mempelai pria</h6>
-                        <div class="form-group">
-                            <input class="form-control" name="groom_pict" type="file" placeholder="Tuliskan.." maxlength="45" required>
-                        </div>
-                        <!-- form group -->
-                        <h6 class="text-left text-white">Lokasi Akad</h6>
-                        <p class="text-left text-white">Contoh : Gedung Grha Savina Vidi</p>
-                        <div class="form-group">
-                            <input class="form-control" name="akad_place" type="text" placeholder="Tuliskan.." maxlength="45" required>
-                        </div>
-                        <!-- form group -->
-                        <h6 class="text-left text-white">Tanggal Akad</h6>
-                        <div class="form-group">
-                            <input class="form-control" name="akad_date" type="date" placeholder="Tuliskan.." required>
-                        </div>
-                        <!-- form group -->
-                        <h6 class="text-left text-white">Jam Akad</h6>
-                        <p class="text-left text-white">Contoh : 08.00 - 09.00</p>
-                        <div class="form-group">
-                            <input class="form-control" name="akad_time" type="text" placeholder="Tuliskan.." maxlength="15" required>
-                        </div>
-                        <!-- form group -->
-                    </div>
-                    <div class="col-md-6">
-                        <h6 class="text-left text-white">Nama Mempelai wanita</h6>
-                        <div class="form-group">
-                            <input class="form-control" name="bride" type="text" placeholder="Tuliskan.." maxlength="45" required>
-                        </div>
-                        <!-- form group -->
-                        <h6 class="text-left text-white">Nama ayah mempelai wanita</h6>
-                        <div class="form-group">
-                            <input class="form-control" name="bride_father" type="text" placeholder="Tuliskan.." maxlength="45" required>
-                        </div>
-                        <!-- form group -->
-                        <h6 class="text-left text-white">Nama ibu mempelai wanita</h6>
-                        <div class="form-group">
-                            <input class="form-control" name="bride_mother" type="text" placeholder="Tuliskan.." maxlength="45" required>
-                        </div>
-                        <!-- form group -->
-                        <h6 class="text-left text-white">Foto mempelai wanita</h6>
-                        <div class="form-group">
-                            <input class="form-control" name="bride_pict" type="file" placeholder="Tuliskan.." maxlength="45" required>
-                        </div>
-                        <!-- form group -->
-                        <h6 class="text-left text-white">Lokasi Resepsi</h6>
-                        <p class="text-left text-white">Contoh : Gedung Grha Savina Vidi</p>
-                        <div class="form-group">
-                            <input class="form-control" name="resepsi_place" type="text" placeholder="Tuliskan.." maxlength="45" required>
-                        </div>
-                        <!-- form group -->
-                        <h6 class="text-left text-white">Tanggal Resepsi</h6>
-                        <div class="form-group">
-                            <input class="form-control" name="resepsi_date" type="date" placeholder="Tuliskan.." required>
-                        </div>
-                        <!-- form group -->
-                        <h6 class="text-left text-white">Jam Resepsi</h6>
-                        <p class="text-left text-white">Contoh : 08.00 - 09.00</p>
-                        <div class="form-group">
-                            <input class="form-control" name="resepsi_time" type="text" placeholder="Tuliskan.." maxlength="15" required>
-                        </div>
-                        <!-- form group -->
-                    </div>
-                </div>
-                <!-- Submit Button-->
+    <?php if (!empty($this->input->get('template'))) { ?>
+
+        <!-- Contact-->
+        <section class="page-section" id="contact">
+            <div class="container">
                 <div class="text-center">
-                    <button class="btn btn-primary btn-xl text-uppercase" id="submitButton" type="submit">Submit</button>
+                    <h2 class="section-heading text-uppercase"><?= $title; ?></h2>
+                    <h3 class="section-subheading text-muted"><?= $subtitle; ?></h3>
                 </div>
-            </form>
-        </div>
-    </section>
+                <form class="form-prevent" id="contactForm" action="<?php echo base_url('home/orderAksi/' . $this->input->get('template') . '/1'); ?>" method="post" enctype="multipart/form-data">
+                    <div class="row align-items-stretch mb-5">
+                        <div class="col-md-6">
+                            <h6 class="text-left text-white">Nama Mempelai pria</h6>
+                            <div class="form-group">
+                                <input class="form-control" name="groom" type="text" placeholder="Tuliskan.." maxlength="45" maxlength="45" required>
+                            </div>
+                            <!-- form group -->
+                            <h6 class="text-left text-white">Nama ayah mempelai pria</h6>
+                            <div class="form-group">
+                                <input class="form-control" name="groom_father" type="text" placeholder="Tuliskan.." maxlength="45" required>
+                            </div>
+                            <!-- form group -->
+                            <h6 class="text-left text-white">Nama ibu mempelai pria</h6>
+                            <div class="form-group">
+                                <input class="form-control" name="groom_mother" type="text" placeholder="Tuliskan.." maxlength="45" required>
+                            </div>
+                            <!-- form group -->
+                            <h6 class="text-left text-white">Foto mempelai pria</h6>
+                            <p class="text-left text-white">Silahkan upload file dengan ekstensi .jpg/.jpeg/.png maksimal 1MB</p>
+                            <div class="form-group">
+                                <input class="form-control" name="groom_pict" type="file" placeholder="Tuliskan.." maxlength="45" required>
+                            </div>
+                            <!-- form group -->
+                            <h6 class="text-left text-white">Lokasi Akad</h6>
+                            <p class="text-left text-white">Contoh : Gedung Grha Savina Vidi</p>
+                            <div class="form-group">
+                                <input class="form-control" name="akad_place" type="text" placeholder="Tuliskan.." maxlength="45" required>
+                            </div>
+                            <!-- form group -->
+                            <h6 class="text-left text-white">Tanggal Akad</h6>
+                            <div class="form-group">
+                                <input class="form-control" name="akad_date" type="date" placeholder="Tuliskan.." required>
+                            </div>
+                            <!-- form group -->
+                            <h6 class="text-left text-white">Jam Akad</h6>
+                            <p class="text-left text-white">Contoh : 08.00 - 09.00</p>
+                            <div class="form-group">
+                                <input class="form-control" name="akad_time" type="text" placeholder="Tuliskan.." maxlength="15" required>
+                            </div>
+                            <!-- form group -->
+                        </div>
+                        <div class="col-md-6">
+                            <h6 class="text-left text-white">Nama Mempelai wanita</h6>
+                            <div class="form-group">
+                                <input class="form-control" name="bride" type="text" placeholder="Tuliskan.." maxlength="45" required>
+                            </div>
+                            <!-- form group -->
+                            <h6 class="text-left text-white">Nama ayah mempelai wanita</h6>
+                            <div class="form-group">
+                                <input class="form-control" name="bride_father" type="text" placeholder="Tuliskan.." maxlength="45" required>
+                            </div>
+                            <!-- form group -->
+                            <h6 class="text-left text-white">Nama ibu mempelai wanita</h6>
+                            <div class="form-group">
+                                <input class="form-control" name="bride_mother" type="text" placeholder="Tuliskan.." maxlength="45" required>
+                            </div>
+                            <!-- form group -->
+                            <h6 class="text-left text-white">Foto mempelai wanita</h6>
+                            <p class="text-left text-white">Silahkan upload file dengan ekstensi .jpg/.jpeg/.png maksimal 1MB</p>
+                            <div class="form-group">
+                                <input class="form-control" name="bride_pict" type="file" placeholder="Tuliskan.." maxlength="45" required>
+                            </div>
+                            <!-- form group -->
+                            <h6 class="text-left text-white">Lokasi Resepsi</h6>
+                            <p class="text-left text-white">Contoh : Gedung Grha Savina Vidi</p>
+                            <div class="form-group">
+                                <input class="form-control" name="resepsi_place" type="text" placeholder="Tuliskan.." maxlength="45" required>
+                            </div>
+                            <!-- form group -->
+                            <h6 class="text-left text-white">Tanggal Resepsi</h6>
+                            <div class="form-group">
+                                <input class="form-control" name="resepsi_date" type="date" placeholder="Tuliskan.." required>
+                            </div>
+                            <!-- form group -->
+                            <h6 class="text-left text-white">Jam Resepsi</h6>
+                            <p class="text-left text-white">Contoh : 08.00 - 09.00</p>
+                            <div class="form-group">
+                                <input class="form-control" name="resepsi_time" type="text" placeholder="Tuliskan.." maxlength="15" required>
+                            </div>
+                            <!-- form group -->
+                        </div>
+                    </div>
+                    <!-- Submit Button-->
+                    <div class="text-center">
+                        <button class="btn btn-primary btn-xl text-uppercase" id="submitButton" type="submit">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+    <?php } elseif ($this->input->get('order') == 'sukses') { ?>
+
+        <!-- Masthead-->
+        <header class="masthead">
+            <div class="container">
+                <div class="masthead-heading text-uppercase">Sukses!</div>
+                <div class="masthead-subheading">Pesanan berhasil terkirim</div>
+                <a class="btn btn-primary btn-xl text-uppercase" href="<?= base_url(); ?>">Back</a>
+            </div>
+        </header>
+
+    <?php } ?>
 
     <!-- Bootstrap core JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>

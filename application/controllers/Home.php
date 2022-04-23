@@ -28,4 +28,58 @@ class home extends CI_Controller
 
         $this->load->view('home/vOrder', $data);
     }
+
+    // order proses
+    public function orderAksi($template, $customer)
+    {
+        $config['upload_path']          = './assets/uploads/';
+        $config['allowed_types']        = 'jpeg|jpg|png';
+        $config['overwrite']            = true;
+        $config['max_size']             = 1000; // 5MB
+        $config['encrypt_name']         = true;
+        $this->load->library('upload', $config);
+
+        // groom_pict
+        if (!empty($_FILES['groom_pict']['name'])) {
+            $this->upload->do_upload('groom_pict');
+            $data = $this->upload->data();
+            $groom_pict = $data['file_name'];
+        }
+
+        // bride_pict
+        if (!empty($_FILES['bride_pict']['name'])) {
+            $this->upload->do_upload('bride_pict');
+            $data = $this->upload->data();
+            $bride_pict = $data['file_name'];
+        }
+
+        $data = array(
+            'id_template'   => $template,
+            'id_customer'   => $customer,
+            'groom'         => $this->input->post('groom'),
+            'groom_father'  => $this->input->post('groom_father'),
+            'groom_mother'  => $this->input->post('groom_mother'),
+            'groom_pict'    => $groom_pict,
+            'bride'         => $this->input->post('bride'),
+            'bride_father'  => $this->input->post('bride_father'),
+            'bride_mother'  => $this->input->post('bride_mother'),
+            'bride_pict'    => $bride_pict,
+            'akad_date'     => $this->input->post('akad_date'),
+            'akad_time'     => $this->input->post('akad_time'),
+            'akad_place'    => $this->input->post('akad_place'),
+            'resepsi_date'  => $this->input->post('resepsi_date'),
+            'resepsi_time'  => $this->input->post('resepsi_time'),
+            'resepsi_place' => $this->input->post('resepsi_place'),
+        );
+
+        if (!$this->Mhome->insertData('pesan', $data)) {
+            redirect('home/order?order=sukses');
+        } else {
+            $this->session->set_flashdata('alert', '<div class="alert alert-danger alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <p>Gagal melakukan order, silahkan coba lagi</p>
+            </div>');
+            redirect($_SERVER['HTTP_REFERER']);
+        }
+    }
 }
