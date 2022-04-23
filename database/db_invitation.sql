@@ -65,6 +65,21 @@ CREATE TABLE `invitation_contact` (
 
 /*Data for the table `invitation_contact` */
 
+/*Table structure for table `messages` */
+
+DROP TABLE IF EXISTS `messages`;
+
+CREATE TABLE `messages` (
+  `id_messages` int(100) NOT NULL AUTO_INCREMENT,
+  `id_pesan` int(10) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `messages` varchar(100) NOT NULL,
+  `tanggal` datetime NOT NULL COMMENT 'Tanggal Dikirim',
+  PRIMARY KEY (`id_messages`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+/*Data for the table `messages` */
+
 /*Table structure for table `pesan` */
 
 DROP TABLE IF EXISTS `pesan`;
