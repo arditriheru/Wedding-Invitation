@@ -43,4 +43,17 @@ class UserAdmin extends CI_Controller
         $this->load->view('admin/vDashboard', $data);
         $this->load->view('templates/footer', $data);
     }
+
+    // halaman template
+    public function template()
+    {
+        $data['title']          = getDateIndo();
+        $data['subtitle']       = "Template";
+
+        $data['dataTemplate']   = $this->mUserAdmin->getData("template")->result();
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('admin/vTemplate', $data);
+        $this->load->view('templates/footer', $data);
+    }
 }
