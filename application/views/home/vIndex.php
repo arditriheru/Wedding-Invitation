@@ -112,7 +112,7 @@
 
                                     <?php } else { ?>
 
-                                        <a href="<?= base_url('login'); ?>" class="btn btn-primary btn-xl text-uppercase" type="button">
+                                        <a href="<?= base_url('login?template=' . $d->id_template); ?>" class="btn btn-primary btn-xl text-uppercase" type="button">
                                             <i class="fas fa-xmark me-1"></i>
                                             Order Now!
                                         </a>

@@ -52,11 +52,12 @@ class mLogin extends CI_Model
         $this->db->update($table, $data, $where);
     }
 
-    public function userMhs($where)
+    public function userData($from, $where)
     {
-        $this->db->select('*');
-        $this->db->from('ekuiv_mahasiswa');
-        $this->db->where($where);
-        return $this->db->get();
+        $query = $this->db->select('*')
+            ->from($from)
+            ->where($where)
+            ->get();
+        return $query;
     }
 }

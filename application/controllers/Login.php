@@ -26,6 +26,69 @@ class login extends CI_Controller
 
     public function loginAksi()
     {
+        // jika login sebagai admin
+        if ($this->mLogin->login(
+            'admin',
+            [
+                'username' => $this->input->post('username'),
+                'password' => md5($this->input->post('password'))
+            ]
+        ) !== FALSE) {
+
+            // ambil data user
+            $data = $this->mLogin->userData(
+                'admin',
+                [
+                    'username' => $this->input->post('username'),
+                    'password' => $this->input->post('password')
+                ]
+            )->row();
+
+            // set session
+            $userdata = array(
+                'login'         => 1,
+                'notif'         => $data->nama,
+            );
+            $this->session->set_userdata($userdata);
+            $this->session->set_flashdata('success', 'Hai, Selamat Datang..');
+            redirect('magang/admin/userAdmin/index?menuUtama=active');
+        }
+
+        // jika login customer
+        elseif ($this->mLogin->login(
+            'customer',
+            [
+                'email'     => $this->input->post('username'),
+                'password'  => md5($this->input->post('password'))
+            ]
+        ) !== FALSE) {
+
+            // ambil data user
+            $data = $this->mLogin->userData(
+                'customer',
+                [
+                    'email'     => $this->input->post('username'),
+                    'password'  => $this->input->post('password')
+                ]
+            )->row();
+
+            // set session
+            $userdata = array(
+                'login'         => 1,
+                'user_name'     => $data->name,
+                'user_email'    => $data->email,
+                'notif'         => $data->nama,
+            );
+            $this->session->set_userdata($userdata);
+            $this->session->set_flashdata('success', 'Hai, Selamat Datang..');
+            redirect('home/order?template=' . $this->input->get('template'));
+        }
+
+        // jika user tidak ditemukan
+        else {
+            $this->session->set_flashdata('error', 'Username atau password salah');
+            redirect($_SERVER['HTTP_REFERER']);
+        }
     }
 
     /**
