@@ -21,7 +21,7 @@ if (!function_exists('getTopTitle')) {
 if (!function_exists('getTitle')) {
 	function getTitle()
 	{
-		$getTitle = "E Q U I V A";
+		$getTitle = "U N D A N G A N K U";
 		return $getTitle;
 	}
 }

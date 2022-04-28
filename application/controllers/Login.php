@@ -51,7 +51,7 @@ class login extends CI_Controller
             );
             $this->session->set_userdata($userdata);
             $this->session->set_flashdata('success', 'Hai, Selamat Datang..');
-            redirect('magang/admin/userAdmin/index?menuUtama=active');
+            redirect('userAdmin/index?menuUtama=active');
         }
 
         // jika login customer
