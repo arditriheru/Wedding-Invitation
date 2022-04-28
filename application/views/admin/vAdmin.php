@@ -10,12 +10,13 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h5><?= $title; ?></h5>
+                            <h5><?php echo $title; ?></h5>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
-                                <li class="nav-item"><?= $this->session->flashdata('alert') ?></li>
-                                <li class="breadcrumb-item active"><?= $subtitle; ?></li>
+                                <li class="nav-item"><?php echo $this->session->flashdata('alert') ?></li>
+                                <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+                                <li class="breadcrumb-item active"><?php echo $subtitle; ?></li>
                             </ol>
                         </div>
                     </div>
@@ -29,31 +30,28 @@
                         <!-- main column -->
 
                         <div class="col-md-12">
-                            <table id="dataTablesAsc1" class="table table-bordered table-hover">
+                            <a class="btn btn-success btn-xs mb-3" data-toggle="modal" data-target="#modalTambah">
+                                <i class="fas fa-plus"></i> Administrator
+                            </a>
+                            <table id="dataTablesDesc1" class="table table-bordered table-hover">
                                 <thead>
                                     <tr>
                                         <th class="text-center">#</th>
-                                        <th class="text-center">Customer</th>
-                                        <th class="text-center">Pernikahan</th>
-                                        <th class="text-center">Akad</th>
-                                        <th class="text-center">Resepsi</th>
-                                        <th class="text-center">Template</th>
+                                        <th class="text-center">Administrator</th>
+                                        <th class="text-center">Username</th>
                                         <th class="text-center">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php $no = 1;
-                                    foreach ($dataPesan as $d) : ?>
+                                    foreach ($dataAdmin as $d) : ?>
                                         <tr>
-                                            <td class="text-center"><?= $no++; ?></td>
-                                            <td class="text-left"><?= $d->email . '<br><strong>' . $d->name . '</strong>'; ?></td>
-                                            <td class="text-center"><?= $d->groom . ' & ' . $d->bride; ?></td>
-                                            <td class="text-center"><?= '<strong>' . formatDateIndo($d->akad_date) . '</strong><br>' . $d->akad_time; ?></td>
-                                            <td class="text-center"><?= '<strong>' . formatDateIndo($d->resepsi_date) . '</strong><br>' . $d->resepsi_time; ?></td>
-                                            <td class="text-center"><?= $d->title; ?></td>
+                                            <td class="text-center"><?php echo $no++; ?></td>
+                                            <td class="text-left"><?php echo $d->nama . '</strong>'; ?></td>
+                                            <td class="text-center"><?php echo $d->username . '</strong>'; ?></td>
                                             <td class="text-center">
-                                                <a href="<?= base_url('admin/userAdmin/detailPesan/' . $d->id_pesan) ?>" class="btn btn-primary btn-xs mb-3">
-                                                    <i class="fas fa-eye"></i> Detail
+                                                <a data-toggle="modal" data-target="#modalEdit<?php echo $d->id_admin; ?>" class="btn btn-primary btn-xs mb-3">
+                                                    <i class="fas fa-lock"></i> Ubah Password
                                                 </a>
                                             </td>
                                         </tr>
@@ -62,6 +60,7 @@
                                 </tbody>
                             </table>
                         </div>
+
                         <!--/.col (main) -->
                     </div>
                     <!-- /.row -->
@@ -72,9 +71,9 @@
         <!-- /.content-wrapper -->
         <footer class="main-footer">
             <div class="float-right d-none d-sm-block">
-                <?= getVersion(); ?>
+                <?php echo getVersion(); ?>
             </div>
-            <strong><?= getCopyright(); ?></strong>
+            <strong><?php echo getCopyright(); ?></strong>
         </footer>
 
         <!-- Control Sidebar -->

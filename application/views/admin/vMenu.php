@@ -72,6 +72,13 @@
                  <li class="nav-header">MASTER DATA</li>
 
                  <li class="nav-item">
+                     <a href="<?php echo base_url(); ?>userAdmin/admin?menuAdmin=active" class="nav-link <?php echo $this->input->get('menuAdmin'); ?>">
+                         <i class="nav-icon fas fa-user-lock"></i>
+                         <p>Admin</p>
+                     </a>
+                 </li>
+
+                 <li class="nav-item">
                      <a href="<?php echo base_url(); ?>userAdmin/template?menuTemplate=active" class="nav-link <?php echo $this->input->get('menuTemplate'); ?>">
                          <i class="nav-icon fas fa-layer-group"></i>
                          <p>Template</p>

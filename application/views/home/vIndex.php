@@ -47,8 +47,8 @@
     <section class="page-section bg-light" id="portfolio">
         <div class="container">
             <div class="text-center">
-                <h2 class="section-heading text-uppercase">Templates</h2>
-                <h3 class="section-subheading text-muted">Template undangan digital tersedia.</h3>
+                <h2 class="section-heading text-uppercase">Design</h2>
+                <h3 class="section-subheading text-muted">Silahkan pilih desain favorit Anda</h3>
             </div>
             <div class="row">
 
@@ -61,7 +61,7 @@
                                 <div class="portfolio-hover">
                                     <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
                                 </div>
-                                <img class="img-fluid" src="<?= base_url('assets/home/img/template/' . $d->image); ?>" alt="..." />
+                                <img class="img-fluid" src="<?= base_url('assets/uploads/templates/' . $d->image); ?>" alt="..." />
                             </a>
                             <div class="portfolio-caption">
                                 <div class="portfolio-caption-heading"><?= $d->title; ?></div>
@@ -81,9 +81,9 @@
             <div class="row align-items-center">
                 <div class="col-lg-4 text-lg-start">Copyright &copy; UndanganKu</div>
                 <div class="col-lg-4 my-3 my-lg-0">
-                    <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                    <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                    <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a class="btn btn-dark btn-social mx-2" href="https://arditriheru.com" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a class="btn btn-dark btn-social mx-2" href="https://arditriheru.com" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-dark btn-social mx-2" href="https://arditriheru.com" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
                 </div>
             </div>
         </div>
@@ -102,7 +102,7 @@
                                     <!-- Project details-->
                                     <h2 class="text-uppercase"><?= $d->title; ?></h2>
                                     <p class="item-intro text-muted"><?= $d->subtitle; ?></p>
-                                    <img class="img-fluid d-block mx-auto" src="<?= base_url('assets/home/img/template/' . $d->image); ?>" alt="..." />
+                                    <img class="img-fluid d-block mx-auto" src="<?= base_url('assets/uploads/templates/' . $d->image); ?>" alt="..." />
 
                                     <?php if (!empty($this->session->userdata('login'))) { ?>
 

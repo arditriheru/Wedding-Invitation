@@ -32,7 +32,7 @@ class home extends CI_Controller
     // order proses
     public function orderAksi($template, $customer)
     {
-        $config['upload_path']          = './assets/uploads/';
+        $config['upload_path']          = './assets/uploads/orders/';
         $config['allowed_types']        = 'jpeg|jpg|png';
         $config['overwrite']            = true;
         $config['max_size']             = 1000; // 5MB
