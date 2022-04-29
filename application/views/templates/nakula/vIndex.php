@@ -203,19 +203,17 @@
                     </div>
                     <div class="row animate-box">
                         <div class="col-md-10 col-md-offset-1">
-                            <form method="post" action="<?php echo base_url('u/tambahPesan') ?>" class="form-inline" role="form">
+                            <form method="post" action="<?php echo base_url('u/tambahUcapanAksi/' . $template . '/' . $id_wedding) ?>" class="form-inline" role="form">
                                 <div class="col-md-4 col-sm-4">
                                     <div class="form-group">
-                                        <input type="hidden" class="form-control" name="id_wedding" id="id_wedding" value="<?php echo $id_wedding; ?>">
-                                        <!-- <input type="hidden" class="form-control" name="pengirim" id="pengirim" value="<?php echo $yth; ?>"> -->
-                                        <label for="pengirim" class="sr-only">Nama Anda</label>
-                                        <input type="text" class="form-control" name="pengirim" id="pengirim" placeholder="Nama Anda.." required="">
+                                        <label for="name" class="sr-only">Nama Anda</label>
+                                        <input type="text" class="form-control" name="name" id="name" placeholder="Nama Anda.." required="">
                                     </div>
                                 </div>
                                 <div class="col-md-5 col-sm-5">
                                     <div class="form-group">
-                                        <label for="pesan" class="sr-only">Ucapan Anda</label>
-                                        <input type="text" class="form-control" name="pesan" id="pesan" placeholder="Silahkan tulis ucapan Anda.." required="">
+                                        <label for="messages" class="sr-only">Ucapan Anda</label>
+                                        <input type="text" class="form-control" name="messages" id="messages" placeholder="Silahkan tulis ucapan Anda.." required="">
                                     </div>
                                 </div>
                                 <div class="col-md-3 col-sm-3">
@@ -226,7 +224,7 @@
 
                                 <?php foreach ($datapesan as $d) : ?>
 
-                                    <p><?php echo '<b>' . $d->pengirim . '</b><br>' . $d->pesan . '<br><small><i>' . date("d/m/Y", strtotime($d->tanggal)) . '&nbsp;' . $d->jam . '</i></small>'; ?></p>
+                                    <p><?php echo '<b>' . $d->name . '</b><br>' . $d->messages . '<br><small><i>' . date("d/m/Y", strtotime($d->tanggal)) . '&nbsp;' . date("H:i:s", strtotime($d->tanggal)) . '</i></small>'; ?></p>
 
                                 <?php endforeach; ?>
                             </div>
