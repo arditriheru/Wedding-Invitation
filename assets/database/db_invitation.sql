@@ -66,9 +66,16 @@ CREATE TABLE `invitation_contact` (
   `name` varbinary(45) NOT NULL,
   `contact` varchar(15) NOT NULL,
   PRIMARY KEY (`id_invitation_contact`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `invitation_contact` */
+
+insert  into `invitation_contact`(`id_invitation_contact`,`id_pesan`,`name`,`contact`) values 
+(1,1,'Ardi','6289629671717'),
+(2,1,'Tri','6289629671718'),
+(3,1,'Heru','6289629671719'),
+(4,1,'Hatmoko','6289629671710'),
+(5,1,'Diah','6289674953617');
 
 /*Table structure for table `messages` */
 
@@ -112,18 +119,19 @@ CREATE TABLE `pesan` (
   `resepsi_date` date NOT NULL,
   `resepsi_time` varchar(15) NOT NULL COMMENT 'Waktu Resepsi',
   `resepsi_place` varchar(45) NOT NULL COMMENT 'Tempat Resepsi',
-  `valid` int(1) NOT NULL DEFAULT 0 COMMENT '0=invalid, 1=valid',
   `akad_address` varchar(100) NOT NULL,
   `resepsi_address` varchar(100) NOT NULL,
   `akad_map` varchar(500) NOT NULL,
   `resepsi_map` varchar(500) NOT NULL,
+  `file_cp` varchar(100) NOT NULL,
+  `valid` int(1) NOT NULL DEFAULT 0 COMMENT '0=invalid, 1=valid',
   PRIMARY KEY (`id_pesan`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `pesan` */
 
-insert  into `pesan`(`id_pesan`,`id_template`,`id_customer`,`groom`,`groom_nickname`,`groom_father`,`groom_mother`,`groom_pict`,`bride`,`bride_nickname`,`bride_father`,`bride_mother`,`bride_pict`,`akad_date`,`akad_time`,`akad_place`,`resepsi_date`,`resepsi_time`,`resepsi_place`,`valid`,`akad_address`,`resepsi_address`,`akad_map`,`resepsi_map`) values 
-(1,1,2,'Ardi Tri Heru, S.Kom','Ardi','Sarmuji','Rumini','458c587b1a7971322dde70de0acf03a3.jpg','Diah Yuniarsih, S.M','Diah','Buchori','Sri Sunarsih','9cec40809d694d89c7361fbade04b698.jpg','2022-05-02','08.00 - 09.00','Rumah Mempelai Perempuan','2022-05-02','13.00 - 15.00','Rumah Mempelai Pria',1,'Jl. Tengiri 8 No.3, Mladangan, Minomartani, Kec. Ngaglik, Kabupaten Sleman, Yogyakarta 55581','Sedogan 02/21 Lumbungrejo, Tempel, Sleman Regency, Special Region of Yogyakarta 55552','https://www.google.com/maps/place/Bakpia+Minomartani+803+Bu+Marno/@-7.7463759,110.4060388,15z/data=!4m2!3m1!1s0x0:0x813519ae77826bb5?sa=X&ved=2ahUKEwjd0eiCoeTwAhUz7HMBHZhzAeEQ_BIwE3oECFIQBQ','https://www.google.com/maps/place/Tekno+Craft/@-7.6428104,110.3304182,17z/data=!3m1!4b1!4m5!3m4!1s0x2e7a5fc82d20d2eb:0xc451aabb4cc4f34f!8m2!3d-7.6428353!4d110.3326012');
+insert  into `pesan`(`id_pesan`,`id_template`,`id_customer`,`groom`,`groom_nickname`,`groom_father`,`groom_mother`,`groom_pict`,`bride`,`bride_nickname`,`bride_father`,`bride_mother`,`bride_pict`,`akad_date`,`akad_time`,`akad_place`,`resepsi_date`,`resepsi_time`,`resepsi_place`,`akad_address`,`resepsi_address`,`akad_map`,`resepsi_map`,`file_cp`,`valid`) values 
+(1,1,1,'Ardi Tri Heru, S.Kom','Ardi','Sarmuji','Rumini','5907c86df7d77a77fa071f2d420b42c7.jpg','Diah Yuniarsih, S.M','Diah','Buchori','Sri Sunarsih','5409f11f077559871e36143b99b6c885.jpg','2022-05-07','08.00 - 09.00','Rumah Mempelai Perempuan','2022-05-08','13.00 - 15.00','Rumah Mempelai Pria','Jalan Magelang KM19 Tempel, Sleman, Yk','Jalan Magelang KM19 Tempel, Sleman, Yk','https://www.google.com/maps/place/Tekno+Craft/@-7.6428104,110.3304182,17z/data=!3m1!4b1!4m5!3m4!1s0x2e7a5fc82d20d2eb:0xc451aabb4cc4f34f!8m2!3d-7.6428353!4d110.3326012','https://www.google.com/maps/place/Tekno+Craft/@-7.6428104,110.3304182,17z/data=!3m1!4b1!4m5!3m4!1s0x2e7a5fc82d20d2eb:0xc451aabb4cc4f34f!8m2!3d-7.6428353!4d110.3326012','eea49f932efe465c664dfb4505ec2311.xlsx',1);
 
 /*Table structure for table `template` */
 
