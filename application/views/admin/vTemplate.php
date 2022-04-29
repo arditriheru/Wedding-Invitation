@@ -40,7 +40,7 @@
                                     <div class="col-sm-6">
                                         <div class="position-relative p-3 bg-white border mb-3" style="height: auto">
                                             <div class="ribbon-wrapper ribbon-lg">
-                                                <div class="ribbon bg-primary text-lg"><?= 'Template ' . $no++ ?></div>
+                                                <div class="ribbon bg-primary text-md"><?= 'Template ' . $no++ ?></div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-12 col-sm-6">
