@@ -37,7 +37,7 @@ class UserAdmin extends CI_Controller
         $data['subtitle']       = "Dashboard";
 
         // data pesanan
-        $data['dataPesan']      = $this->mUserAdmin->detailPesan('pesan.valid=0')->result();
+        $data['dataPesan']      = $this->mUserAdmin->detailPesan('id_pesan IS NOT NULL')->result();
 
         $this->load->view('templates/header', $data);
         $this->load->view('admin/vDashboard', $data);
@@ -100,6 +100,24 @@ class UserAdmin extends CI_Controller
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
             <p>Gagal melakukan order, silahkan coba lagi</p>
             </div>');
+            redirect($_SERVER['HTTP_REFERER']);
+        }
+    }
+
+    // proses validasi pesanan
+    public function validasiPesan($value, $id)
+    {
+        $data = array(
+            'valid'      => $value,
+        );
+
+        if (!$this->mUserAdmin->updateData('pesan', $data, array('id_pesan' => $id))) {
+
+            $this->session->set_flashdata('success', 'Berhasil validasi data');
+            redirect($_SERVER['HTTP_REFERER']);
+        } else {
+
+            $this->session->set_flashdata('error', 'Gagal validasi data');
             redirect($_SERVER['HTTP_REFERER']);
         }
     }

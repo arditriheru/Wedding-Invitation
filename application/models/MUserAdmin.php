@@ -90,6 +90,8 @@ class mUserAdmin extends CI_Model
             ->join('customer', 'pesan.id_customer = customer.id_customer')
             ->join('template', 'pesan.id_template = template.id_template')
             ->where($where)
+            ->order_by('valid', 'ASC')
+            ->order_by('id_pesan', 'ASC')
             ->get();
         return $query;
     }

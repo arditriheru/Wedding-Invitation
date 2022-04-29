@@ -52,9 +52,21 @@
                                             <td class="text-center"><?= '<strong>' . formatDateIndo($d->resepsi_date) . '</strong><br>' . $d->resepsi_time; ?></td>
                                             <td class="text-center"><?= $d->title; ?></td>
                                             <td class="text-center">
-                                                <a href="<?= base_url('admin/userAdmin/detailPesan/' . $d->id_pesan) ?>" class="btn btn-primary btn-xs mb-3">
-                                                    <i class="fas fa-eye"></i> Detail
-                                                </a>
+
+                                                <?php if ($d->valid == 0) { ?>
+
+                                                    <a href="<?= base_url('userAdmin/validasiPesan/1/' . $d->id_pesan) ?>" class="btn btn-danger btn-xs mb-3" onclick="javascript: return confirm('Yakin validasi order?')">
+                                                        <i class="fas fa-times"></i> Validasi
+                                                    </a>
+
+                                                <?php } else { ?>
+
+                                                    <a href="<?= base_url('userAdmin/detailPesan/' . $d->id_pesan) ?>" class="btn btn-primary btn-xs mb-3">
+                                                        <i class="fas fa-eye"></i> Detail
+                                                    </a>
+
+                                                <?php } ?>
+
                                             </td>
                                         </tr>
 
