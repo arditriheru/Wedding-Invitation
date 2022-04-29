@@ -146,7 +146,9 @@
             </div>
         </header>
 
-    <?php } ?>
+    <?php } else {
+        redirect(base_url('#portfolio'));
+    } ?>
 
     <!-- Bootstrap core JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>

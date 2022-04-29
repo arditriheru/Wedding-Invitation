@@ -69,7 +69,7 @@ class login extends CI_Controller
                 'customer',
                 [
                     'email'     => $this->input->post('username'),
-                    'password'  => $this->input->post('password')
+                    'password'  => md5($this->input->post('password'))
                 ]
             )->row();
 
@@ -101,23 +101,44 @@ class login extends CI_Controller
         $data['subtitle']       = "Daftar akun baru";
 
         $this->load->view('layout/header', $data);
-        $this->load->view('mhs/vSignup', $data);
+        $this->load->view('home/vSignup', $data);
         $this->load->view('layout/footer', $data);
     }
 
     public function signupAksi()
     {
+        $email      = $this->input->post('email');
+
+        if ($this->mLogin->Is_already_register($email) != TRUE) {
+
+            $data = array(
+                'name'          => ucwords(strtolower($this->input->post('name'))),
+                'email'         => $email,
+                'address'       => $this->input->post('address'),
+                'contact'       => $this->input->post('contact'),
+                'password'      => md5($this->input->post('password')),
+                'created_at'    => date("Y-m-d H:i:s"),
+            );
+
+            $this->mLogin->Insert_user_data($data);
+
+            $this->session->set_flashdata('success', 'Berhasil mendaftar');
+            redirect('login/signupSukses?id=' . $email);
+        } else {
+            $this->session->set_flashdata('error', 'Email sudah terdaftar');
+            redirect($_SERVER['HTTP_REFERER']);
+        }
     }
 
     public function signupSukses()
     {
         $data = array(
-            'title'     => 'Seminar',
+            'title'     => 'UndanganKu',
             'subtitle'  => 'Berhasil',
         );
 
         $this->load->view('layout/header', $data);
-        $this->load->view('mhs/vSignupSukses', $data);
+        $this->load->view('home/vSignupSukses', $data);
         $this->load->view('layout/footer', $data);
     }
 

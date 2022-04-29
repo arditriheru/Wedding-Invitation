@@ -33,8 +33,8 @@ class mLogin extends CI_Model
 
     function Is_already_register($id)
     {
-        $this->db->where('id_mahasiswa', $id);
-        $query = $this->db->get('ekuiv_mahasiswa');
+        $this->db->where('email', $id);
+        $query = $this->db->get('customer');
         if ($query->num_rows() > 0) {
             return true;
         } else {
@@ -44,7 +44,7 @@ class mLogin extends CI_Model
 
     function Insert_user_data($data)
     {
-        $this->db->insert('ekuiv_mahasiswa', $data);
+        $this->db->insert('customer', $data);
     }
 
     public function Last_login($table, $data, $where)

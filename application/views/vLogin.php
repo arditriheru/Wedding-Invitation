@@ -32,7 +32,7 @@
                     <div class="wrap-input100 validate-input" data-validate="Valid username is required: ex@abc.xyz">
                         <input class="input100" type="text" name="username" value="<?= $this->input->get('id'); ?>" required>
                         <span class="focus-input100"></span>
-                        <span class="label-input100">NIM mahasiswa</span>
+                        <span class="label-input100">Email</span>
                     </div>
 
 
