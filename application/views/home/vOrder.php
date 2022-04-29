@@ -44,12 +44,51 @@
                     <h2 class="section-heading text-uppercase"><?= $title; ?></h2>
                     <h3 class="section-subheading text-muted"><?= $subtitle; ?></h3>
                 </div>
+
+                <script>
+                    function fileValidation() {
+                        var fileInput = document.getElementById('file');
+                        var filePath = fileInput.value;
+                        var allowedExtensions = /(\.jpg|\.jpeg|\.png)$/i;
+                        if (!allowedExtensions.exec(filePath)) {
+                            document.getElementById('alert').innerHTML = '<p class="text-danger">Silahkan upload file dengan ekstensi .jpeg/.jpg/.png</p>';
+                            fileInput.value = '';
+                            return false;
+                        }
+                        if ($('#file')[0].files[0].size > 500000) {
+                            document.getElementById('alert').innerHTML = '<p class="text-danger">Maaf, File terlalu besar! Maksimal upload 500KB</p>';
+                            return false;
+                        } else {
+                            //Image preview
+                            if (fileInput.files && fileInput.files[0]) {
+                                var reader = new FileReader();
+                                reader.onload = function(e) {
+                                    document.getElementById('imagePreview1').innerHTML = '<img src="' + e.target.result + '" height="200px" width="auto"/>';
+                                };
+                                reader.readAsDataURL(fileInput.files[0]);
+                            }
+                        }
+                    }
+                </script>
+
                 <form class="form-prevent" id="contactForm" action="<?php echo base_url('home/orderAksi/' . $this->input->get('template') . '/1'); ?>" method="post" enctype="multipart/form-data">
                     <div class="row align-items-stretch mb-5">
+                        <h6 class="text-left text-white">Unggah Kontak Penerima</h6>
+                        <div id="alert"></div>
+                        <p class="text-left text-white">Silahkan upload file dengan ekstensi .xls/.xlsx maksimal 500KB</p>
+                        <div class="form-group">
+                            <input class="form-control" name="file_cp" type="file" onchange="return fileValidation()" required>
+                        </div>
+                        <!-- form group -->
                         <div class="col-md-6">
-                            <h6 class="text-left text-white">Nama Mempelai pria</h6>
+                            <h6 class="text-left text-white">Nama Mempelai Pria</h6>
                             <div class="form-group">
                                 <input class="form-control" name="groom" type="text" placeholder="Tuliskan.." maxlength="45" maxlength="45" required>
+                            </div>
+                            <!-- form group -->
+                            <h6 class="text-left text-white">Nama Panggilan Mempelai Pria</h6>
+                            <div class="form-group">
+                                <input class="form-control" name="groom_nickname" type="text" placeholder="Tuliskan.." maxlength="10" maxlength="45" required>
                             </div>
                             <!-- form group -->
                             <h6 class="text-left text-white">Nama ayah mempelai pria</h6>
@@ -74,6 +113,17 @@
                                 <input class="form-control" name="akad_place" type="text" placeholder="Tuliskan.." maxlength="45" required>
                             </div>
                             <!-- form group -->
+                            <h6 class="text-left text-white">Alamat Akad</h6>
+                            <p class="text-left text-white">Contoh : Jalan Magelang KM19 Tempel, Sleman, Yk</p>
+                            <div class="form-group">
+                                <input class="form-control" name="akad_address" type="text" placeholder="Tuliskan.." maxlength="100" required>
+                            </div>
+                            <!-- form group -->
+                            <h6 class="text-left text-white">Link GoogleMap Akad</h6>
+                            <div class="form-group">
+                                <input class="form-control" name="akad_map" type="text" placeholder="Tuliskan.." maxlength="500" required>
+                            </div>
+                            <!-- form group -->
                             <h6 class="text-left text-white">Tanggal Akad</h6>
                             <div class="form-group">
                                 <input class="form-control" name="akad_date" type="date" placeholder="Tuliskan.." required>
@@ -87,9 +137,14 @@
                             <!-- form group -->
                         </div>
                         <div class="col-md-6">
-                            <h6 class="text-left text-white">Nama Mempelai wanita</h6>
+                            <h6 class="text-left text-white">Nama Mempelai Wanita</h6>
                             <div class="form-group">
                                 <input class="form-control" name="bride" type="text" placeholder="Tuliskan.." maxlength="45" required>
+                            </div>
+                            <!-- form group -->
+                            <h6 class="text-left text-white">Nama Panggilan Mempelai Wanita</h6>
+                            <div class="form-group">
+                                <input class="form-control" name="bride_nickname" type="text" placeholder="Tuliskan.." maxlength="10" required>
                             </div>
                             <!-- form group -->
                             <h6 class="text-left text-white">Nama ayah mempelai wanita</h6>
@@ -112,6 +167,17 @@
                             <p class="text-left text-white">Contoh : Gedung Grha Savina Vidi</p>
                             <div class="form-group">
                                 <input class="form-control" name="resepsi_place" type="text" placeholder="Tuliskan.." maxlength="45" required>
+                            </div>
+                            <!-- form group -->
+                            <h6 class="text-left text-white">Alamat Resepsi</h6>
+                            <p class="text-left text-white">Contoh : Jalan Magelang KM19 Tempel, Sleman, Yk</p>
+                            <div class="form-group">
+                                <input class="form-control" name="resepsi_address" type="text" placeholder="Tuliskan.." maxlength="100" required>
+                            </div>
+                            <!-- form group -->
+                            <h6 class="text-left text-white">Link GoogleMap Resepsi</h6>
+                            <div class="form-group">
+                                <input class="form-control" name="resepsi_map" type="text" placeholder="Tuliskan.." maxlength="500" required>
                             </div>
                             <!-- form group -->
                             <h6 class="text-left text-white">Tanggal Resepsi</h6>

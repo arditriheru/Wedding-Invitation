@@ -7,7 +7,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-xs-2">
-                        <div id="fh5co-logo"><a href="<?php echo base_url(); ?>">Teknocraft<strong>.</strong>id</a></div>
+                        <div id="fh5co-logo"><a href="<?php echo base_url(); ?>"><?= $title; ?><strong>.</strong>id</a></div>
                     </div>
                     <div class="col-xs-10 text-right menu-1">
                         <ul>
@@ -258,8 +258,7 @@
 
                     <div class="row copyright">
                         <div class="col-md-12 text-center">
-                            <p><small>Dibuat sendiri oleh @arditriheru<br>
-                                    Mau buat undangan seperti ini?<br><br>
+                            <p><small>Mau buat undangan seperti ini?<br><br>
                                     <a href="https://wa.me/6289674953617" class="btn btn-outline btn-sm" style="color:white;" target="_blank">Klik Disini Untuk Mulai</a></small></p>
                         </div>
                     </div>

@@ -53,6 +53,14 @@
                                             <td class="text-center"><?= $d->title; ?></td>
                                             <td class="text-center">
 
+                                                <?php if (!empty($d->file_cp)) { ?>
+
+                                                    <a href="<?= base_url('userAdmin/validasiPesan/1/' . $d->id_pesan) ?>" class="btn btn-success btn-xs mb-3">
+                                                        <i class="fas fa-file-excel"></i> Kontak
+                                                    </a>
+
+                                                <?php } ?>
+
                                                 <?php if ($d->valid == 0) { ?>
 
                                                     <a href="<?= base_url('userAdmin/validasiPesan/1/' . $d->id_pesan) ?>" class="btn btn-danger btn-xs mb-3" onclick="javascript: return confirm('Yakin validasi order?')">
