@@ -1,5 +1,5 @@
  <!-- Preloader -->
- <?php $this->load->view('templates/preloader'); ?>
+ <?php $this->load->view('layout/preloader'); ?>
 
  <!-- Navbar -->
  <nav class="main-header navbar navbar-expand navbar-white navbar-light">
@@ -12,7 +12,7 @@
              <a href="https://arditriheru.com/" class="badge badge-success">ONLINE</a>
          </li>
          <li class="nav-item d-none d-sm-inline-block">
-             <a href="https://arditriheru.com/" class="nav-link"><?php echo $this->session->userdata('magang_id_hello') . ' - ' . ucwords(strtolower($this->session->userdata('magang_hello'))); ?></a>
+             <a href="https://arditriheru.com/" class="nav-link"><?php echo $this->session->userdata('login_as') . ' - ' . ucwords(strtolower($this->session->userdata('notif'))); ?></a>
          </li>
      </ul>
 
@@ -25,7 +25,7 @@
          <!-- login as -->
          <li class="nav-item">
              <a class="nav-link" href="https://arditriheru.com/" target="_blank">
-                 <?php echo $this->session->userdata('magang_login_as'); ?>
+                 <?php echo $this->session->userdata('login_as'); ?>
              </a>
          </li>
          <!-- expand fullscreen -->
@@ -40,7 +40,7 @@
                  <i class="fas fa-chevron-down"></i>
              </a>
              <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                 <ul><a class="nav-link" href="<?php echo base_url(); ?>magang/login/logout">
+                 <ul><a class="nav-link" href="<?php echo base_url(); ?>login/logout">
                          <i class="far fa-circle nav-icon"></i> Logout
                      </a></ul>
              </div>

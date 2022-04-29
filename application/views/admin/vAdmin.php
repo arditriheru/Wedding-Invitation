@@ -83,3 +83,57 @@
         <!-- /.control-sidebar -->
     </div>
     <!-- ./wrapper -->
+
+    <!-- modal tambah template -->
+    <div class="modal fade" id="modalTambah">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Tambah Template</h4><br>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                    <form class="form-prevent" action="<?php echo base_url('userAdmin/tambahAdminAksi') ?>" method="post" enctype="multipart/form-data">
+                        <div class="card card-secondary">
+                            <div class="card-header">
+                                <h3 class="card-title">Form Data</h3>
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="form-group">
+                                            <label class="required" for="exampleInputEmail1">Nama Admin</label>
+                                            <input type="text" class="form-control" name="nama" id="nama" placeholder="Tuliskan" required>
+                                        </div>
+                                        <!-- /.form-group -->
+                                        <div class="form-group">
+                                            <label class="required" for="exampleInputEmail1">Username</label>
+                                            <input type="text" class="form-control" name="username" id="username" placeholder="Tuliskan" required>
+                                        </div>
+                                        <!-- /.form-group -->
+                                        <div class="form-group">
+                                            <label class="required" for="exampleInputEmail1">Passwword</label>
+                                            <input type="password" class="form-control" name="password" id="password" placeholder="Tuliskan" required>
+                                        </div>
+                                        <!-- /.form-group -->
+                                    </div>
+                                </div>
+                                <button class="btn btn-info button-prevent mt-3 mb-3" type="submit">
+                                    <!-- spinner-border adalah component bawaan bootstrap untuk menampilakn roda berputar  -->
+                                    <div class="spinner"><i role="status" class="spinner-border spinner-border-sm"></i> Submit </div>
+                                    <div class="hide-text">Submit</div>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->

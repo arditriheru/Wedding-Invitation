@@ -39,9 +39,9 @@ class UserAdmin extends CI_Controller
         // data pesanan
         $data['dataPesan']      = $this->mUserAdmin->detailPesan('id_pesan IS NOT NULL')->result();
 
-        $this->load->view('templates/header', $data);
+        $this->load->view('layout/header', $data);
         $this->load->view('admin/vDashboard', $data);
-        $this->load->view('templates/footer', $data);
+        $this->load->view('layout/footer', $data);
     }
 
     // halaman admin
@@ -52,9 +52,9 @@ class UserAdmin extends CI_Controller
 
         $data['dataAdmin']   = $this->mUserAdmin->getData("admin")->result();
 
-        $this->load->view('templates/header', $data);
+        $this->load->view('layout/header', $data);
         $this->load->view('admin/vAdmin', $data);
-        $this->load->view('templates/footer', $data);
+        $this->load->view('layout/footer', $data);
     }
 
     // halaman template
@@ -65,9 +65,9 @@ class UserAdmin extends CI_Controller
 
         $data['dataTemplate']   = $this->mUserAdmin->getData("template")->result();
 
-        $this->load->view('templates/header', $data);
+        $this->load->view('layout/header', $data);
         $this->load->view('admin/vTemplate', $data);
-        $this->load->view('templates/footer', $data);
+        $this->load->view('layout/footer', $data);
     }
 
     // tambah template proses
@@ -94,12 +94,10 @@ class UserAdmin extends CI_Controller
         );
 
         if (!$this->mUserAdmin->insertData('template', $data)) {
+            $this->session->set_flashdata('success', 'Berhasil menambah data');
             redirect($_SERVER['HTTP_REFERER']);
         } else {
-            $this->session->set_flashdata('alert', '<div class="alert alert-danger alert-dismissable">
-            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-            <p>Gagal melakukan order, silahkan coba lagi</p>
-            </div>');
+            $this->session->set_flashdata('error', 'Gagal menambah data');
             redirect($_SERVER['HTTP_REFERER']);
         }
     }
@@ -118,6 +116,24 @@ class UserAdmin extends CI_Controller
         } else {
 
             $this->session->set_flashdata('error', 'Gagal validasi data');
+            redirect($_SERVER['HTTP_REFERER']);
+        }
+    }
+
+    // tambah admin proses
+    public function tambahAdminAksi()
+    {
+        $data = array(
+            'nama'      => $this->input->post('nama'),
+            'username'  => $this->input->post('username'),
+            'password'  => md5($this->input->post('password')),
+        );
+
+        if (!$this->mUserAdmin->insertData('admin', $data)) {
+            $this->session->set_flashdata('success', 'Berhasil menambah data');
+            redirect($_SERVER['HTTP_REFERER']);
+        } else {
+            $this->session->set_flashdata('error', 'Gagal menambah data');
             redirect($_SERVER['HTTP_REFERER']);
         }
     }

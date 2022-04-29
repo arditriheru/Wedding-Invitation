@@ -19,9 +19,9 @@ class login extends CI_Controller
         // hapus session sebelumnya
         $this->session->sess_destroy();
 
-        $this->load->view('templates/header', $data);
+        $this->load->view('layout/header', $data);
         $this->load->view('vLogin', $data);
-        $this->load->view('templates/footer', $data);
+        $this->load->view('layout/footer', $data);
     }
 
     public function loginAksi()
@@ -40,7 +40,7 @@ class login extends CI_Controller
                 'admin',
                 [
                     'username' => $this->input->post('username'),
-                    'password' => $this->input->post('password')
+                    'password' => md5($this->input->post('password'))
                 ]
             )->row();
 
@@ -48,6 +48,7 @@ class login extends CI_Controller
             $userdata = array(
                 'login'         => 1,
                 'notif'         => $data->nama,
+                'login_as'      => 'Admin',
             );
             $this->session->set_userdata($userdata);
             $this->session->set_flashdata('success', 'Hai, Selamat Datang..');
@@ -99,9 +100,9 @@ class login extends CI_Controller
         $data['title']          = "Events";
         $data['subtitle']       = "Daftar akun baru";
 
-        $this->load->view('templates/header', $data);
+        $this->load->view('layout/header', $data);
         $this->load->view('mhs/vSignup', $data);
-        $this->load->view('templates/footer', $data);
+        $this->load->view('layout/footer', $data);
     }
 
     public function signupAksi()
@@ -115,9 +116,9 @@ class login extends CI_Controller
             'subtitle'  => 'Berhasil',
         );
 
-        $this->load->view('templates/header', $data);
+        $this->load->view('layout/header', $data);
         $this->load->view('mhs/vSignupSukses', $data);
-        $this->load->view('templates/footer', $data);
+        $this->load->view('layout/footer', $data);
     }
 
     public function logout()
