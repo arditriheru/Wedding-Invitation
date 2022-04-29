@@ -35,9 +35,6 @@
                                         <th class="text-center">#</th>
                                         <th class="text-center">Customer</th>
                                         <th class="text-center">Pernikahan</th>
-                                        <!-- <th class="text-center">Akad</th>
-                                        <th class="text-center">Resepsi</th>
-                                        <th class="text-center">Template</th> -->
                                         <th class="text-center">Kontak</th>
                                         <th class="text-center">Action</th>
                                     </tr>
@@ -49,12 +46,9 @@
                                             <td class="text-center"><?= $no++; ?></td>
                                             <td class="text-left"><?= $d->email . '<br><strong>' . $d->name . '</strong>'; ?></td>
                                             <td class="text-center"><?= $d->groom . ' & ' . $d->bride; ?></td>
-                                            <!-- <td class="text-center"><?= '<strong>' . formatDateIndo($d->akad_date) . '</strong><br>' . $d->akad_time; ?></td>
-                                            <td class="text-center"><?= '<strong>' . formatDateIndo($d->resepsi_date) . '</strong><br>' . $d->resepsi_time; ?></td>
-                                            <td class="text-center"><?= $d->title; ?></td> -->
-                                            <td class="text-left">
+                                            <td class="text-center">
 
-                                                <a href="<?= base_url('u/' . strtolower($d->title) . '/' . $d->id_pesan) . '?d=Nama%20Tamu' ?>" class="btn btn-warning btn-xs mb-3" target="_blank">
+                                                <a href="#" data-toggle="modal" data-target="#modalUpload<?= $d->id_pesan; ?>" class="btn btn-warning btn-xs mb-3" target="_blank">
                                                     <i class="fas fa-upload"></i>Upload
                                                 </a>
 
@@ -79,6 +73,14 @@
 
                                                     <a href="<?= base_url('u/' . strtolower($d->title) . '/' . $d->id_pesan) . '?d=Nama%20Tamu' ?>" class="btn btn-primary btn-xs mb-3" target="_blank">
                                                         <i class="fas fa-eye"></i> Demo
+                                                    </a>
+
+                                                <?php } ?>
+
+                                                <?php if ($this->mUserAdmin->countData('invitation_contact', ['id_pesan' => $d->id_pesan]) > 0) { ?>
+
+                                                    <a href="<?= base_url('userAdmin/downloadLinkShare/' . strtolower($d->title) . '/' . $d->id_pesan) ?>" class="btn btn-secondary btn-xs mb-3">
+                                                        <i class="fas fa-user"></i> Link Share
                                                     </a>
 
                                                 <?php } ?>
@@ -112,3 +114,51 @@
         <!-- /.control-sidebar -->
     </div>
     <!-- ./wrapper -->
+
+    <!-- modal data kontak -->
+    <?php foreach ($dataPesan as $d) : ?>
+        <div class="modal fade" id="modalUpload<?= $d->id_pesan; ?>">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Data Kontak <?= $d->name; ?></h4><br>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-prevent" action="<?php echo base_url('userAdmin/uploadExcelKontak/' . $d->id_pesan) ?>" method="post" enctype="multipart/form-data">
+                            <div class="card card-secondary">
+                                <div class="card-header">
+                                    <h3 class="card-title">Upload File Excel</h3>
+                                </div>
+                                <!-- /.card-header -->
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="form-group">
+                                                <label for="dokumen">File Dokumen</label>
+                                                <div class="custom-file">
+                                                    <input type="file" name="upload_file" id="upload_file" required accept=".csv, .xls, .xlsx">
+                                                </div>
+                                                <p class="text-danger">Lampirkan file dengan ekstensi .Csv / .Xls / .Xlsx</p>
+                                                <button class="btn btn-info button-prevent mt-1" type="submit">
+                                                    <!-- spinner-border adalah component bawaan bootstrap untuk menampilakn roda berputar  -->
+                                                    <div class="spinner"><i role="status" class="spinner-border spinner-border-sm"></i> Upload </div>
+                                                    <div class="hide-text">Upload Data</div>
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+    <?php endforeach; ?>
+    <!-- /.modal -->

@@ -95,4 +95,15 @@ class mUserAdmin extends CI_Model
             ->get();
         return $query;
     }
+
+    function listKontak($where)
+    {
+        $query = $this->db->select('*, invitation_contact.name AS name_contact, invitation_contact.contact AS contact_number')
+            ->from('invitation_contact')
+            ->join('pesan', 'invitation_contact.id_pesan = pesan.id_pesan')
+            ->join('customer', 'pesan.id_customer = customer.id_customer')
+            ->where($where)
+            ->get();
+        return $query;
+    }
 }

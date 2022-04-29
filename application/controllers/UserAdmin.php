@@ -147,4 +147,106 @@ class UserAdmin extends CI_Controller
             redirect($_SERVER['HTTP_REFERER']);
         }
     }
+
+    // Upload excel data kontak
+    public function uploadExcelKontak($id)
+    {
+        $upload_file    = $_FILES['upload_file']['name'];
+        $extension      = pathinfo($upload_file, PATHINFO_EXTENSION);
+
+        // cek ekstensi file
+        if ($extension == 'csv') {
+            $reader = new \PhpOffice\PhpSpreadsheet\Reader\Csv();
+        } else if ($extension == 'xls') {
+            $reader = new \PhpOffice\PhpSpreadsheet\Reader\Xls();
+        } else {
+            $reader = new \PhpOffice\PhpSpreadsheet\Reader\Xlsx();
+        }
+
+        $spreadsheet    = $reader->load($_FILES['upload_file']['tmp_name']);
+        $sheetdata      = $spreadsheet->getActiveSheet()->toArray();
+        $sheetcount     = count($sheetdata);
+
+        if ($sheetcount > 1) {
+            $dataMhs   = array();
+
+            for ($i = 1; $i < $sheetcount; $i++) {
+
+                $data[] = array(
+                    'name'      => $sheetdata[$i][1],
+                    'contact'   => $sheetdata[$i][2],
+                    'id_pesan'  => $id,
+                );
+            }
+
+            if (
+                $this->mUserAdmin->insert_batch('invitation_contact', $data)
+            ) {
+                $this->session->set_flashdata('success', 'Berhasil upload data');
+                redirect($_SERVER['HTTP_REFERER']);
+            } else {
+                $this->session->set_flashdata('error', 'Gagal upload data');
+                redirect($_SERVER['HTTP_REFERER']);
+            }
+        }
+    }
+
+    // Download ke excel link share
+    public function downloadLinkShare($title, $id)
+    {
+        // Create new Spreadsheet object
+        $spreadsheet = new Spreadsheet();
+        $spreadsheet->createSheet();
+        $spreadsheet->createSheet();
+
+        // Set document properties
+        $spreadsheet->getProperties()->setCreator('UndanganKu')
+            ->setLastModifiedBy('UndanganKu')
+            ->setTitle('Office 2007 XLSX Test Document')
+            ->setSubject('Office 2007 XLSX Test Document')
+            ->setDescription('Test document for Office 2007 XLSX, generated using PHP classes.')
+            ->setKeywords('office 2007 openxml php')
+            ->setCategory('Test result file');
+
+        $query = $this->mUserAdmin->listKontak(['invitation_contact.id_pesan' => $id])->result();
+
+        // Data worksheet mahasiswa
+        $spreadsheet->setActiveSheetIndex(0)
+            ->setTitle('Data Mahasiswa')
+            ->setCellValue('A1', '#')
+            ->setCellValue('B1', 'NAMA PENERIMA')
+            ->setCellValue('C1', 'LINK');
+
+        $no     = 1;
+        $i      = 2;
+
+        foreach ($query as $d) {
+
+            $spreadsheet->setActiveSheetIndex(0)
+                ->setCellValue('A' . $i, $no++)
+                ->setCellValue('B' . $i, $d->name_contact)
+                ->setCellValue('C' . $i, 'https://wa.me/' . $d->contact_number . '?text=Klik%20tautan%20berikut%20ini%20untuk%20melihat%20undangan%20pernikahan%20%0A%0A' . base_url('u/' . strtolower($title) . '/' . $d->id_pesan . '?d=' . $d->name_contact) . '%0A%0AKami%20yang%20berbahagia%2C%20%0A' . $d->bride_nickname . '%20%0A%26%0A' . $d->groom_nickname . '%20');
+            $i++;
+        }
+
+        // Set active sheet index to the first sheet, so Excel opens this as the first sheet
+        $spreadsheet->setActiveSheetIndex(0);
+
+        // Redirect output to a client’s web browser (Xlsx)
+        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+        header('Content-Disposition: attachment;filename="Data Link Share".xlsx"');
+        header('Cache-Control: max-age=0');
+        // If you're serving to IE 9, then the following may be needed
+        header('Cache-Control: max-age=1');
+
+        // If you're serving to IE over SSL, then the following may be needed
+        header('Expires: Mon, 26 Jul 1997 05:00:00 GMT'); // Date in the past
+        header('Last-Modified: ' . gmdate('D, d M Y H:i:s') . ' GMT'); // always modified
+        header('Cache-Control: cache, must-revalidate'); // HTTP/1.1
+        header('Pragma: public'); // HTTP/1.0
+
+        $writer = IOFactory::createWriter($spreadsheet, 'Xlsx');
+        $writer->save('php://output');
+        exit;
+    }
 }

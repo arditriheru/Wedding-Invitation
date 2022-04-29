@@ -30,6 +30,7 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
                     <li class="nav-item"><a class="nav-link" href="#portfolio">Order Now!</a></li>
+                    <li class="nav-item"><a class="nav-link" href="<?= base_url('login'); ?>">Login</a></li>
                 </ul>
             </div>
         </div>
@@ -45,39 +46,13 @@
                     <h3 class="section-subheading text-muted"><?= $subtitle; ?></h3>
                 </div>
 
-                <script>
-                    function fileValidation() {
-                        var fileInput = document.getElementById('file');
-                        var filePath = fileInput.value;
-                        var allowedExtensions = /(\.jpg|\.jpeg|\.png)$/i;
-                        if (!allowedExtensions.exec(filePath)) {
-                            document.getElementById('alert').innerHTML = '<p class="text-danger">Silahkan upload file dengan ekstensi .jpeg/.jpg/.png</p>';
-                            fileInput.value = '';
-                            return false;
-                        }
-                        if ($('#file')[0].files[0].size > 500000) {
-                            document.getElementById('alert').innerHTML = '<p class="text-danger">Maaf, File terlalu besar! Maksimal upload 500KB</p>';
-                            return false;
-                        } else {
-                            //Image preview
-                            if (fileInput.files && fileInput.files[0]) {
-                                var reader = new FileReader();
-                                reader.onload = function(e) {
-                                    document.getElementById('imagePreview1').innerHTML = '<img src="' + e.target.result + '" height="200px" width="auto"/>';
-                                };
-                                reader.readAsDataURL(fileInput.files[0]);
-                            }
-                        }
-                    }
-                </script>
-
                 <form class="form-prevent" id="contactForm" action="<?php echo base_url('home/orderAksi/' . $this->input->get('template') . '/1'); ?>" method="post" enctype="multipart/form-data">
                     <div class="row align-items-stretch mb-5">
                         <h6 class="text-left text-white">Unggah Kontak Penerima</h6>
                         <div id="alert"></div>
                         <p class="text-left text-white">Silahkan upload file dengan ekstensi .xls/.xlsx maksimal 500KB</p>
                         <div class="form-group">
-                            <input class="form-control" name="file_cp" type="file" onchange="return fileValidation()" required>
+                            <input class="form-control" name="file_cp" type="file" onchange="return fileValidation()" required accept=".xls, .xlsx">
                         </div>
                         <!-- form group -->
                         <div class="col-md-6">
@@ -104,7 +79,7 @@
                             <h6 class="text-left text-white">Foto mempelai pria</h6>
                             <p class="text-left text-white">Silahkan upload file dengan ekstensi .jpg/.jpeg/.png maksimal 1MB</p>
                             <div class="form-group">
-                                <input class="form-control" name="groom_pict" type="file" placeholder="Tuliskan.." maxlength="45" required>
+                                <input class="form-control" name="groom_pict" type="file" placeholder="Tuliskan.." maxlength="45" required accept=".jpg, .jpeg, .png">
                             </div>
                             <!-- form group -->
                             <h6 class="text-left text-white">Lokasi Akad</h6>
@@ -160,7 +135,7 @@
                             <h6 class="text-left text-white">Foto mempelai wanita</h6>
                             <p class="text-left text-white">Silahkan upload file dengan ekstensi .jpg/.jpeg/.png maksimal 1MB</p>
                             <div class="form-group">
-                                <input class="form-control" name="bride_pict" type="file" placeholder="Tuliskan.." maxlength="45" required>
+                                <input class="form-control" name="bride_pict" type="file" placeholder="Tuliskan.." maxlength="45" required accept=".jpg, .jpeg, .png">
                             </div>
                             <!-- form group -->
                             <h6 class="text-left text-white">Lokasi Resepsi</h6>

@@ -146,7 +146,7 @@
                                             <label class="required" for="customFile">Thumbnail</label>
                                             <div id="alert"></div>
                                             <div class="custom-file">
-                                                <input type="file" class="custom-file-input" id="file" name="file" onchange="return fileValidation()" required>
+                                                <input type="file" class="custom-file-input" id="file" name="file" onchange="return fileValidation()" required accept=".jpg, .jpeg, .png">
                                                 <label class="custom-file-label" for="customFile">Choose file</label>
                                             </div>
                                             <p><small>Unggah file dengan ekstensi jpeg/jpg/png, maksimal ukuran adalah 500 KB</small></p>
