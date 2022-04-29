@@ -61,7 +61,7 @@
 
                                                 <?php } else { ?>
 
-                                                    <a href="<?= base_url('userAdmin/detailPesan/' . $d->id_pesan) ?>" class="btn btn-primary btn-xs mb-3">
+                                                    <a href="<?= base_url('userAdmin/' . strtolower($d->title) . '/' . $d->id_pesan) . '?d=Nama%20Tamu' ?>" class="btn btn-primary btn-xs mb-3">
                                                         <i class="fas fa-eye"></i> Detail
                                                     </a>
 
