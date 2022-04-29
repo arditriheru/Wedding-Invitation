@@ -35,9 +35,10 @@
                                         <th class="text-center">#</th>
                                         <th class="text-center">Customer</th>
                                         <th class="text-center">Pernikahan</th>
-                                        <th class="text-center">Akad</th>
+                                        <!-- <th class="text-center">Akad</th>
                                         <th class="text-center">Resepsi</th>
-                                        <th class="text-center">Template</th>
+                                        <th class="text-center">Template</th> -->
+                                        <th class="text-center">Kontak</th>
                                         <th class="text-center">Action</th>
                                     </tr>
                                 </thead>
@@ -48,18 +49,25 @@
                                             <td class="text-center"><?= $no++; ?></td>
                                             <td class="text-left"><?= $d->email . '<br><strong>' . $d->name . '</strong>'; ?></td>
                                             <td class="text-center"><?= $d->groom . ' & ' . $d->bride; ?></td>
-                                            <td class="text-center"><?= '<strong>' . formatDateIndo($d->akad_date) . '</strong><br>' . $d->akad_time; ?></td>
+                                            <!-- <td class="text-center"><?= '<strong>' . formatDateIndo($d->akad_date) . '</strong><br>' . $d->akad_time; ?></td>
                                             <td class="text-center"><?= '<strong>' . formatDateIndo($d->resepsi_date) . '</strong><br>' . $d->resepsi_time; ?></td>
-                                            <td class="text-center"><?= $d->title; ?></td>
-                                            <td class="text-center">
+                                            <td class="text-center"><?= $d->title; ?></td> -->
+                                            <td class="text-left">
+
+                                                <a href="<?= base_url('u/' . strtolower($d->title) . '/' . $d->id_pesan) . '?d=Nama%20Tamu' ?>" class="btn btn-warning btn-xs mb-3" target="_blank">
+                                                    <i class="fas fa-upload"></i>Upload
+                                                </a>
 
                                                 <?php if (!empty($d->file_cp)) { ?>
 
-                                                    <a href="<?= base_url('userAdmin/validasiPesan/1/' . $d->id_pesan) ?>" class="btn btn-success btn-xs mb-3">
-                                                        <i class="fas fa-file-excel"></i> Kontak
+                                                    <a href="<?= base_url('userAdmin/downloadFileCp/' . $d->file_cp) ?>" class="btn btn-success btn-xs mb-3">
+                                                        <i class="fas fa-download"></i> Download
                                                     </a>
 
                                                 <?php } ?>
+
+                                            </td>
+                                            <td class="text-center">
 
                                                 <?php if ($d->valid == 0) { ?>
 

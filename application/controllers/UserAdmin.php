@@ -12,7 +12,6 @@ use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
 class UserAdmin extends CI_Controller
 {
-
     public function __construct()
     {
         parent::__construct();
@@ -134,6 +133,17 @@ class UserAdmin extends CI_Controller
             redirect($_SERVER['HTTP_REFERER']);
         } else {
             $this->session->set_flashdata('error', 'Gagal menambah data');
+            redirect($_SERVER['HTTP_REFERER']);
+        }
+    }
+
+    public function downloadFileCp($id)
+    {
+        if (force_download('./assets/uploads/orders/' . $id, NULL)) {
+            $this->session->set_flashdata('success', 'Berhasil mendownload data');
+            redirect($_SERVER['HTTP_REFERER']);
+        } else {
+            $this->session->set_flashdata('error', 'Gagal mendownload data');
             redirect($_SERVER['HTTP_REFERER']);
         }
     }
