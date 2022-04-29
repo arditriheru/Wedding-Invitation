@@ -189,4 +189,47 @@ if (!function_exists('getThnAkademik')) {
         $result = date('Y', strtotime(getDateNow())) . '/' . date('Y', strtotime('+1 year', strtotime(getDateNow())));
         return $result;
     }
+
+    if (!function_exists('formatHari')) {
+        function formatHari($value)
+        {
+            $day = date('D', strtotime($value));
+
+            switch ($day) {
+                case 'Sun':
+                    $hari = "Minggu";
+                    break;
+
+                case 'Mon':
+                    $hari = "Senin";
+                    break;
+
+                case 'Tue':
+                    $hari = "Selasa";
+                    break;
+
+                case 'Wed':
+                    $hari = "Rabu";
+                    break;
+
+                case 'Thu':
+                    $hari = "Kamis";
+                    break;
+
+                case 'Fri':
+                    $hari = "Jumat";
+                    break;
+
+                case 'Sat':
+                    $hari = "Sabtu";
+                    break;
+
+                default:
+                    $hari = "Tidak di ketahui";
+                    break;
+            }
+
+            return $hari;
+        }
+    }
 }

@@ -154,6 +154,8 @@ class UserAdmin extends CI_Controller
         $data['counter_bln']    = date('m', strtotime($user->akad_date));
         $data['counter_tgl']    = date('d', strtotime($user->akad_date));
 
+        $data['mp_pict']        = $user->groom_pict;
+        $data['mw_pict']        = $user->bride_pict;
         $data['mp']             = $user->groom_nickname;
         $data['mw']             = $user->bride_nickname;
         $data['mpp']            = $user->groom;
@@ -161,7 +163,7 @@ class UserAdmin extends CI_Controller
         $data['mp_ortu']        = $user->groom_father . ' & ' . $user->groom_mother;
         $data['mw_ortu']        = $user->bride_father . ' & ' . $user->bride_mother;
 
-        $data['hari_akad']      = "Minggu";
+        $data['hari_akad']      = formatHari($user->akad_date);
         $data['tgl_akad']       = formatDateIndo($user->akad_date);
         $data['jam_akad1']      = substr($user->akad_time, 0, -8) . ' WIB';
         $data['jam_akad2']      = substr($user->akad_time, -5) . ' WIB';
@@ -169,7 +171,7 @@ class UserAdmin extends CI_Controller
         $data['alamat_akad']    = $user->akad_address;
         $data['map_akad']       = $user->akad_map;
 
-        $data['hari_resepsi']   = "Minggu";
+        $data['hari_resepsi']   = formatHari($user->resepsi_date);
         $data['tgl_resepsi']    = formatDateIndo($user->resepsi_date);
         $data['jam_resepsi1']   = substr($user->resepsi_time, 0, -8) . ' WIB';
         $data['jam_resepsi2']   = substr($user->resepsi_time, -5) . ' WIB';

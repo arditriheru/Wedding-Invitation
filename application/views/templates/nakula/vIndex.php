@@ -54,7 +54,7 @@
                     <div class="couple-wrap animate-box">
                         <div class="couple-half">
                             <div class="groom">
-                                <img src="<?php echo base_url(); ?>assets/templates/nakula/images/pengantin2.jpg" alt="groom" class="img-responsive">
+                                <img src="<?php echo base_url('assets/uploads/orders/' . $mp_pict); ?>" alt="groom" class="img-responsive">
                             </div>
                             <div class="desc-groom">
                                 <h3><strong><?php echo $mpp; ?></strong></h3>
@@ -65,7 +65,7 @@
                         <p class="heart text-center"><i class="icon-heart2"></i></p>
                         <div class="couple-half">
                             <div class="bride">
-                                <img src="<?php echo base_url(); ?>assets/templates/nakula/images/pengantin1.jpg" alt="groom" class="img-responsive">
+                                <img src="<?php echo base_url('assets/uploads/orders/' . $mw_pict); ?>" alt="groom" class="img-responsive">
                             </div>
                             <div class="desc-bride">
                                 <h3><strong><?php echo $mwp; ?></strong></h3>
