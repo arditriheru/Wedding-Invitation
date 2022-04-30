@@ -12,7 +12,7 @@
              <a href="https://arditriheru.com/" class="badge badge-success">ONLINE</a>
          </li>
          <li class="nav-item d-none d-sm-inline-block">
-             <a href="https://arditriheru.com/" class="nav-link"><?php echo $this->session->userdata('login_as') . ' - ' . ucwords(strtolower($this->session->userdata('notif'))); ?></a>
+             <a href="https://arditriheru.com/" class="nav-link"><?= $this->session->userdata('login_as') . ' - ' . ucwords(strtolower($this->session->userdata('notif'))); ?></a>
          </li>
      </ul>
 
@@ -20,12 +20,12 @@
      <ul class="navbar-nav ml-auto">
          <!-- Navbar alert -->
          <li class="nav-item">
-             <?php echo $this->session->flashdata('alert'); ?>
+             <?= $this->session->flashdata('alert'); ?>
          </li>
          <!-- login as -->
          <li class="nav-item">
              <a class="nav-link" href="https://arditriheru.com/" target="_blank">
-                 <?php echo $this->session->userdata('login_as'); ?>
+                 <?= $this->session->userdata('login_as'); ?>
              </a>
          </li>
          <!-- expand fullscreen -->
@@ -40,7 +40,7 @@
                  <i class="fas fa-chevron-down"></i>
              </a>
              <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                 <ul><a class="nav-link" href="<?php echo base_url(); ?>login/logout">
+                 <ul><a class="nav-link" href="<?= base_url(); ?>login/logout">
                          <i class="far fa-circle nav-icon"></i> Logout
                      </a></ul>
              </div>
@@ -52,7 +52,7 @@
  <!-- Main Sidebar Container -->
  <aside class="main-sidebar sidebar-dark-primary elevation-4">
      <!-- Brand Logo -->
-     <a href="<?php echo base_url(); ?>magang/admin/userAdmin/index" class="brand-link">
+     <a href="<?= base_url(); ?>magang/admin/userAdmin/index" class="brand-link">
          <span class="text-center brand-text font-weight-light"><?= getTitle(); ?></span>
      </a>
 
@@ -63,7 +63,7 @@
              <ul class="nav nav-pills nav-sidebar flex-column" id="myDIV" data-widget="treeview" role="menu" data-accordion="false">
                  <!-- Add icons to the links using the .nav-icon class with font-awesome or any other icon font library -->
                  <li class="nav-item">
-                     <a href="<?php echo base_url(); ?>userAdmin/index?menuUtama=active" class="nav-link <?php echo $this->input->get('menuUtama'); ?>">
+                     <a href="<?= base_url(); ?>userAdmin/index?menuUtama=active" class="nav-link <?= $this->input->get('menuUtama'); ?>">
                          <i class="nav-icon fas fa-tachometer-alt"></i>
                          <p>Menu Utama</p>
                      </a>
@@ -72,14 +72,14 @@
                  <li class="nav-header">MASTER DATA</li>
 
                  <li class="nav-item">
-                     <a href="<?php echo base_url(); ?>userAdmin/admin?menuAdmin=active" class="nav-link <?php echo $this->input->get('menuAdmin'); ?>">
+                     <a href="<?= base_url(); ?>userAdmin/admin?menuAdmin=active" class="nav-link <?= $this->input->get('menuAdmin'); ?>">
                          <i class="nav-icon fas fa-user-lock"></i>
                          <p>Admin</p>
                      </a>
                  </li>
 
                  <li class="nav-item">
-                     <a href="<?php echo base_url(); ?>userAdmin/template?menuTemplate=active" class="nav-link <?php echo $this->input->get('menuTemplate'); ?>">
+                     <a href="<?= base_url(); ?>userAdmin/template?menuTemplate=active" class="nav-link <?= $this->input->get('menuTemplate'); ?>">
                          <i class="nav-icon fas fa-layer-group"></i>
                          <p>Template</p>
                      </a>

@@ -1,6 +1,6 @@
 <?php
 
-class Mhome extends CI_Model
+class mHome extends CI_Model
 {
 
     /*

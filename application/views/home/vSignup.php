@@ -19,7 +19,7 @@
                     }
                 </script>
 
-                <form class="form-prevent" action="<?php echo base_url(); ?>login/signupAksi" method="post">
+                <form class="form-prevent" action="<?= base_url(); ?>login/signupAksi" method="post">
                     <div class="input-group mb-3">
                         <input type="text" class="form-control" name="name" placeholder="Nama lengkap" required>
                         <div class="input-group-append">

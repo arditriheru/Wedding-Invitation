@@ -10,13 +10,13 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h5><?php echo $title; ?></h5>
+                            <h5><?= $title; ?></h5>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
-                                <li class="nav-item"><?php echo $this->session->flashdata('alert') ?></li>
+                                <li class="nav-item"><?= $this->session->flashdata('alert') ?></li>
                                 <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
-                                <li class="breadcrumb-item active"><?php echo $subtitle; ?></li>
+                                <li class="breadcrumb-item active"><?= $subtitle; ?></li>
                             </ol>
                         </div>
                     </div>
@@ -72,9 +72,9 @@
         <!-- /.content-wrapper -->
         <footer class="main-footer">
             <div class="float-right d-none d-sm-block">
-                <?php echo getVersion(); ?>
+                <?= getVersion(); ?>
             </div>
-            <strong><?php echo getCopyright(); ?></strong>
+            <strong><?= getCopyright(); ?></strong>
         </footer>
 
         <!-- Control Sidebar -->
@@ -123,7 +123,7 @@
                         }
                     </script>
 
-                    <form class="form-prevent" action="<?php echo base_url('userAdmin/tambahTemplateAksi') ?>" method="post" enctype="multipart/form-data">
+                    <form class="form-prevent" action="<?= base_url('userAdmin/tambahTemplateAksi') ?>" method="post" enctype="multipart/form-data">
                         <div class="card card-secondary">
                             <div class="card-header">
                                 <h3 class="card-title">Form Data</h3>

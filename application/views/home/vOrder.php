@@ -46,7 +46,7 @@
                     <h3 class="section-subheading text-muted"><?= $subtitle; ?></h3>
                 </div>
 
-                <form class="form-prevent" id="contactForm" action="<?php echo base_url('home/orderAksi/' . $this->input->get('template') . '/1'); ?>" method="post" enctype="multipart/form-data">
+                <form class="form-prevent" id="contactForm" action="<?= base_url('home/orderAksi/' . $this->input->get('template') . '/1'); ?>" method="post" enctype="multipart/form-data">
                     <div class="row align-items-stretch mb-5">
                         <h6 class="text-left text-white">Unggah Kontak Penerima</h6>
                         <div id="alert"></div>

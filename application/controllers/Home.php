@@ -6,7 +6,7 @@ class home extends CI_Controller
     {
         parent::__construct();
 
-        $this->load->model("Mhome");
+        $this->load->model("mHome");
     }
 
     // halaman utama
@@ -15,7 +15,7 @@ class home extends CI_Controller
         $data['title']          = "Undanganku";
         $data['subtitle']       = "Digital Wedding Invitation";
 
-        $data['dataTemplate']   = $this->Mhome->getData("template")->result();
+        $data['dataTemplate']   = $this->mHome->getData("template")->result();
 
         $this->load->view('home/vIndex', $data);
     }
@@ -86,7 +86,7 @@ class home extends CI_Controller
             'file_cp'           => $file_cp,
         );
 
-        if (!$this->Mhome->insertData('pesan', $data)) {
+        if (!$this->mHome->insertData('pesan', $data)) {
             redirect('home/order?order=sukses');
         } else {
             $this->session->set_flashdata('alert', '<div class="alert alert-danger alert-dismissable">

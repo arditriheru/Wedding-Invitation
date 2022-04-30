@@ -127,7 +127,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form class="form-prevent" action="<?php echo base_url('userAdmin/uploadExcelKontak/' . $d->id_pesan) ?>" method="post" enctype="multipart/form-data">
+                        <form class="form-prevent" action="<?= base_url('userAdmin/uploadExcelKontak/' . $d->id_pesan) ?>" method="post" enctype="multipart/form-data">
                             <div class="card card-secondary">
                                 <div class="card-header">
                                     <h3 class="card-title">Upload File Excel</h3>
