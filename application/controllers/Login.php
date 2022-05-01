@@ -81,6 +81,10 @@ class login extends CI_Controller
                 'notif'         => $data->nama,
             );
             $this->session->set_userdata($userdata);
+            $this->mLogin->Last_login('customer', ['updated_at' => date('Y-m-d H:i:s')], [
+                'email'     => $this->input->post('username'),
+                'password'  => md5($this->input->post('password'))
+            ]);
             $this->session->set_flashdata('success', 'Hai, Selamat Datang..');
             redirect('home/order?template=' . $this->input->get('template'));
         }
@@ -145,6 +149,6 @@ class login extends CI_Controller
     public function logout()
     {
         $this->session->sess_destroy();
-        redirect('login');
+        redirect(base_url());
     }
 }
