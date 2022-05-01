@@ -1,6 +1,6 @@
 /*
 SQLyog Enterprise v12.5.1 (64 bit)
-MySQL - 10.4.22-MariaDB : Database - db_invitation
+MySQL - 5.7.37-0ubuntu0.18.04.1 : Database - db_invitation
 *********************************************************************
 */
 
@@ -12,7 +12,7 @@ MySQL - 10.4.22-MariaDB : Database - db_invitation
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
-CREATE DATABASE /*!32312 IF NOT EXISTS*/`db_invitation` /*!40100 DEFAULT CHARACTER SET utf8mb4 */;
+CREATE DATABASE /*!32312 IF NOT EXISTS*/`db_invitation` /*!40100 DEFAULT CHARACTER SET latin1 */;
 
 USE `db_invitation`;
 
@@ -46,15 +46,16 @@ CREATE TABLE `customer` (
   `contact` varchar(15) NOT NULL,
   `password` varchar(100) NOT NULL,
   `created_at` datetime NOT NULL,
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id_customer`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `customer` */
 
 insert  into `customer`(`id_customer`,`name`,`email`,`address`,`contact`,`password`,`created_at`,`updated_at`) values 
-(1,'Budi Aprilianto','budiapri@gmail.com','Turi, Sleman, Yk','089629671717','9e60dd35fbd10ff9e2b55c3fee96cff9','2022-04-28 14:19:00','0000-00-00 00:00:00'),
-(2,'Ardi Tri Heru','arditriheruh@gmail.com','Sedogan Lumbungrejo Tempel Sleman','089629671717','8c5e459e7eb3ab6492b89996b8100f29','2022-04-29 08:44:59','2022-04-29 08:44:59');
+(1,'Budi Aprilianto','budiapri@gmail.com','Turi, Sleman, Yk','089629671717','9e60dd35fbd10ff9e2b55c3fee96cff9','2022-04-28 14:19:00',NULL),
+(2,'Ardi Tri Heru','arditriheruh@gmail.com','Sedogan Lumbungrejo Tempel Sleman','089629671717','8c5e459e7eb3ab6492b89996b8100f29','2022-04-29 08:44:59','2022-05-01 08:15:54'),
+(3,'Budi Aprilianto','aprilmoop.ba@gmail.com','Perumahan gadjah mada asri blok N3 Turi, Sleman','085799116798','5a3e5cbe981518ff2ec25a0c9e932e57','2022-05-01 05:15:54',NULL);
 
 /*Table structure for table `invitation_contact` */
 
@@ -66,7 +67,7 @@ CREATE TABLE `invitation_contact` (
   `name` varbinary(45) NOT NULL,
   `contact` varchar(15) NOT NULL,
   PRIMARY KEY (`id_invitation_contact`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `invitation_contact` */
 
@@ -75,7 +76,9 @@ insert  into `invitation_contact`(`id_invitation_contact`,`id_pesan`,`name`,`con
 (2,1,'Tri','6289629671718'),
 (3,1,'Heru','6289629671719'),
 (4,1,'Hatmoko','6289629671710'),
-(5,1,'Diah','6289674953617');
+(5,1,'Diah','6289674953617'),
+(6,2,'Nama','Nomor'),
+(7,2,'Ardi Tri Heru','89629671717');
 
 /*Table structure for table `messages` */
 
@@ -86,7 +89,7 @@ CREATE TABLE `messages` (
   `id_pesan` int(10) NOT NULL,
   `name` varchar(50) NOT NULL,
   `messages` varchar(100) NOT NULL,
-  `tanggal` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp() COMMENT 'Tanggal Dikirim',
+  `tanggal` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'Tanggal Dikirim',
   PRIMARY KEY (`id_messages`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
@@ -124,9 +127,9 @@ CREATE TABLE `pesan` (
   `akad_map` varchar(500) NOT NULL,
   `resepsi_map` varchar(500) NOT NULL,
   `file_cp` varchar(100) NOT NULL,
-  `valid` int(1) NOT NULL DEFAULT 0 COMMENT '0=invalid, 1=valid',
+  `valid` int(1) NOT NULL DEFAULT '0' COMMENT '0=invalid, 1=valid',
   PRIMARY KEY (`id_pesan`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `pesan` */
 
@@ -142,7 +145,7 @@ CREATE TABLE `template` (
   `title` varchar(20) NOT NULL,
   `subtitle` varchar(50) NOT NULL,
   `image` varchar(100) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id_template`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
 
